@@ -1,1 +1,28 @@
 # create your drupal and postgres config here, based off the last assignment
+services:
+  drupal: # name of the image
+    image: custom-drupal # the actual version of the image
+    build: .
+    ports: # assigned ports.  
+      - "8080:80"
+# I found these in docker hub in under the drupal image. This listed commonuse volumes.    
+    volumes:
+      - drupal-modules:/var/www/html/modules
+      - drupal-profiles:/var/www/html/profiles       
+      - drupal-sites:/var/www/html/sites      
+      - drupal-themes:/var/www/html/themes
+  MARIADB:
+    image: MARIADB:latest 
+    environment:
+      - MARIADB_PASSWORD = mypasswd
+      - MARIADB_ROOT_PASSWORD = mypasswd
+      - MARIADB_DATABASE
+      - MARIADB_USER
+    
+      
+# you can use volumes by the name and not having anything in them like below
+volumes:
+  drupal-modules:
+  drupal-profiles:
+  drupal-sites:
+  drupal-themes:
