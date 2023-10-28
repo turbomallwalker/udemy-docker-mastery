@@ -16,12 +16,17 @@ services:
       - drupal-sites:/var/www/html/sites      
       - drupal-themes:/var/www/html/themes
  
-  postgres:
-    image: postgres:14
+  db:
+    image: mariadb
     environment:
-      - POSTGRES_PASSWORD=mypasswd
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
     volumes:
-      - drupal-data:/var/lib/postgresql/data
+      - data:/var/lib/mysql
+    ports:
+      - "3306:3306"
 
 volumes:
   drupal-data:
