@@ -15,7 +15,7 @@ services:
       - drupal-profiles:/var/www/html/profiles       
       - drupal-sites:/var/www/html/sites      
       - drupal-themes:/var/www/html/themes
- 
+ #below is the example working with mariadb.  
   db:
     image: mariadb
     environment:
