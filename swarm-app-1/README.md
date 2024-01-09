@@ -28,20 +28,20 @@ Use the new `--mount` format to do this: `--mount type=volume,source=db-data,tar
   - key-value storage for incoming votes
   - no public ports
   - on frontend network
-  - 1 replica NOTE VIDEO SAYS TWO BUT ONLY ONE NEEDED
+  - 1 replicas NOTE VIDEO SAYS TWO BUT ONLY ONE NEEDED
 
 - worker
   - bretfisher/examplevotingapp_worker
   - backend processor of redis and storing results in postgres
   - no public ports
   - on frontend and backend networks
-  - 1 replica
+  - 1 replicas
 
 - db
   - postgres:9.4
   - one named volume needed, pointing to /var/lib/postgresql/data
   - on backend network
-  - 1 replica
+  - 1 replicas
   - remember set env for password-less connections -e POSTGRES_HOST_AUTH_METHOD=trust
 
 - result
@@ -50,4 +50,4 @@ Use the new `--mount` format to do this: `--mount type=volume,source=db-data,tar
   - runs on high port since just for admins (lets imagine)
   - so run on a high port of your choosing (I choose 5001), container listens on 80
   - on backend network
-  - 1 replica
+  - 1 replicas
